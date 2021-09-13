@@ -1,5 +1,6 @@
 package com.example.android_project
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -16,6 +17,9 @@ class MainActivity : AppCompatActivity() {
         val image_url = "https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_19751_e14a0104.jpeg?region=0,0,540,810&width=480"
         val imageView = findViewById<ImageView>(R.id.characterPic)
         Picasso.get().load(image_url).into(imageView)
+
+        //temp code Oskar
+        startActivity(Intent(this, GameActivity::class.java))
 
 
     }

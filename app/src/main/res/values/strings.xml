@@ -6,4 +6,7 @@
     <string name="buttonFight">Fight</string>
     <string name="buttonRandomChar">Random hero</string>
     <string name="buttonSearchHero">Search hero</string>
+    <string name="vs">VS</string>
+    <string name="whoWillWin">Who will win?</string>
+    <string name="select">Select</string>
 </resources>
