@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Project">
         <activity
+            android:name=".BrowseActivity"
+            android:exported="true" />
+      <activity
             android:name=".GameActivity"
             android:exported="true" />
         <activity

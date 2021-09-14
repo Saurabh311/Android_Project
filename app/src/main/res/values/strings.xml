@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Android_Project</string>
-    <string name="characterName">Character name</string>
-
+    <string name="characterName">Character Name</string>
     <string name="characterImgPlaceHolder">Character pic</string>
     <string name="buttonFight">Fight</string>
     <string name="buttonRandomChar">Random hero</string>
