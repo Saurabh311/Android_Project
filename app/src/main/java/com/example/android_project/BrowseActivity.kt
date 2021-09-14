@@ -14,8 +14,5 @@ class BrowseActivity : AppCompatActivity() {
         recyclerView.adapter = RecyclerAdapter(this)
         TODO("retrieve data and send to RecyclerAdapter(this, -data-)")
 
-
-        //Use this setting to improve performance
-        //if you know changes in content do not change layout size
     }
 }
