@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         Picasso.get().load(image_url).into(imageView)
 
         //temp code Oskar
-        startActivity(Intent(this, GameActivity::class.java))
+        startActivity(Intent(this, HeroInfoActivity::class.java))
 
 
     }
