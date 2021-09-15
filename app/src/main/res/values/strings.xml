@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android_Project</string>
+    <string name="app_name">CLASH OF HEROES</string> //temp name
     <string name="characterName">Character Name</string>
     <string name="characterImgPlaceHolder">Character pic</string>
     <string name="buttonFight">Fight</string>

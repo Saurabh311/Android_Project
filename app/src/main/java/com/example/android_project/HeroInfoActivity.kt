@@ -33,7 +33,9 @@ class HeroInfoActivity: AppCompatActivity() {
 
 
         btn_backButton.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java)
+            val intent = Intent(this, GameActivity::class.java).apply {
+                // putExtra(selectedHero)
+            }
 
             startActivity(intent)
         }
