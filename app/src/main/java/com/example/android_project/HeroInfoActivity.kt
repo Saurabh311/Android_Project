@@ -26,8 +26,7 @@ class HeroInfoActivity: AppCompatActivity() {
         tv_heroDescription = findViewById(R.id.hi_heroDescription)
         btn_backButton = findViewById(R.id.hi_btn_back)
 
-
-
+        // temp codes
         tv_heroName.setText("Iron Man")
         iv_heroImage.setImageResource(R.drawable.ironman)
         tv_heroScore.setText(" Score: 20")
