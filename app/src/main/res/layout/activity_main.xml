@@ -24,6 +24,7 @@
         android:layout_width="380dp"
         android:layout_height="213dp"
         android:layout_marginTop="56dp"
+        android:scaleType="centerCrop"
         android:contentDescription="@string/characterImgPlaceHolder"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
