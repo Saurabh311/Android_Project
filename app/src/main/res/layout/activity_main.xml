@@ -23,12 +23,16 @@
         android:id="@+id/characterPic"
         android:layout_width="380dp"
         android:layout_height="213dp"
+<<<<<<< HEAD
         android:layout_marginTop="56dp"
         android:scaleType="centerCrop"
+=======
+        android:layout_marginTop="92dp"
+>>>>>>> ac3de0cfd64edd695ecd8579c21f2766a18655cc
         android:contentDescription="@string/characterImgPlaceHolder"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/characterName" />
 
@@ -66,4 +70,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/characterPic"
         app:layout_constraintVertical_bias="0.022" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

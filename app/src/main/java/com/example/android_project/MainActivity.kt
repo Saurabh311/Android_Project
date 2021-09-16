@@ -8,8 +8,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import com.squareup.picasso.Picasso
-import java.io.InputStream
-import java.net.URL
+import java.lang.Exception
 
 lateinit var btn_search: Button
 lateinit var btn_random: Button
@@ -72,4 +71,36 @@ class MainActivity : AppCompatActivity() {
         }
         startActivity(intent)
     }
+    /*
+    methods that shows how to add character to database and getting lose/wins from a list
+    this can be removed when we want //fredrik
+
+    fun addCharScore (view: View){
+        val dbHelper = CharScoreDatabaseHelper (this)
+         val charid = findViewById<EditText>(R.id.charid).text.toString()
+        val wins = findViewById<EditText>(R.id.winid).text.toString()
+        val loss = findViewById<EditText>(R.id.lossid).text.toString()
+
+        try {
+            val char = Character(charid.toInt(), wins.toInt(), loss.toInt())
+            dbHelper.addCharScore(char)
+
+        }catch (e:Exception){
+            println("character was not modified/added")
+        }
+
+
+    }
+    fun check (view: View){
+        val dbHelper = CharScoreDatabaseHelper (this)
+        var listchar = mutableListOf<Character>()
+        val char1 = Character(1,2,3)
+        val char2 = Character(2,3,4)
+        listchar.add(char1)
+        listchar.add(char2)
+        val list  = dbHelper.getAllCharScores(listchar)
+        println(list.get(0).wins)
+        println(list.size)
+    }
+     */
 }
