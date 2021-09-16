@@ -1,26 +1,33 @@
 package com.example.android_project
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import com.squareup.picasso.Picasso
-import java.io.InputStream
-import java.net.URL
+import android.util.Log
+import com.example.android_project.R
+import com.example.android_project.model.CharacterResponse
+import com.example.android_project.network.APIclient
+import retrofit2.Call
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //temp code start fredrik
-        val image_url = "https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_19751_e14a0104.jpeg?region=0,0,540,810&width=480"
-        val imageView = findViewById<ImageView>(R.id.characterPic)
-        Picasso.get().load(image_url).into(imageView)
+        val client = APIclient.apiService.fetchCharactersById("1")
+        client.enqueue(object : retrofit2.Callback<CharacterResponse> {
+            override fun onResponse(
+                call: Call<CharacterResponse>,
+                response: Response<CharacterResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("characters", "" + response)
+                }
+            }
 
-        //temp code Oskar
-        startActivity(Intent(this, GameActivity::class.java))
-
-
+            override fun onFailure(call: Call<CharacterResponse>, t: Throwable) {
+                Log.e("failed", "" + t.message)
+            }
+        })
     }
 }
