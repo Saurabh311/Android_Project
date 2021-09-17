@@ -7,8 +7,18 @@ data class Character (
     val id: Int? = null,
     @Json(name = "name")
     val name: String?= null,
+    @Json(name = "powerstats")
+    val powerStats: PowerStats? = null,
+    @Json(name ="biography")
+    val bio: Biography? = null,
+    @Json(name = "appearance")
+    val appearance: Appearance? = null,
+    @Json(name = "work")
+    val work: Work? = null,
+    @Json(name = "connections")
+    val connections: Connections? = null,
     @Json(name = "image")
-    val img: Img?= null,
+    val img: Thumbnail?= null,
 
 
 
@@ -17,10 +27,6 @@ data class Character (
     var loss: Int? = null,
 
 
-        )
-
-data class Img (
-    val url: String,
         )
 
 
