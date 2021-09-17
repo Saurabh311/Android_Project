@@ -3,6 +3,11 @@ package com.example.android_project
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.example.android_project.model.CharacterResponse
+import com.example.android_project.network.APIclient
+import retrofit2.Call
+import retrofit2.Response
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -26,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        //temp code start fredrik
+        val image_url =
+            "https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_19751_e14a0104.jpeg?region=0,0,540,810&width=480"
+        val imageView = findViewById<ImageView>(R.id.characterPic)
+        Picasso.get().load(image_url).into(imageView)
         if (!activeChar){
             getRandomChar()
         }
@@ -118,6 +129,7 @@ class MainActivity : AppCompatActivity() {
         val list  = dbHelper.getAllCharScores(listchar)
         println(list.get(0).wins)
         println(list.size)
+
     }
      */
 }

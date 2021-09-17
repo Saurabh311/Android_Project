@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
         android:layout_width="377dp"
@@ -30,19 +31,18 @@
         app:layout_constraintTop_toBottomOf="@+id/characterName"
         tools:context=".MainActivity">
 
-        <ImageButton
-            android:id="@+id/characterPic"
-            android:layout_width="380dp"
-            android:layout_height="213dp"
-            android:layout_marginTop="92dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/characterImgPlaceHolder"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/characterName" />
-
-
+    <ImageButton
+        android:id="@+id/characterPic"
+        android:layout_width="380dp"
+        android:layout_height="213dp"
+        android:layout_marginTop="56dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/characterImgPlaceHolder"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/characterName" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

@@ -1,10 +1,10 @@
-package com.example.android_project.Database
+package com.example.android_project.database
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.android_project.Model.Character
+import com.example.android_project.model.Character
 
 class CharScoreDatabaseHelper (
     context: Context?) : SQLiteOpenHelper(context,"charScore",null,1) {
@@ -13,7 +13,6 @@ class CharScoreDatabaseHelper (
     val COLUMN_CHAR_ID = "CHAR_ID"
     val COLUMN_WINS = "WINS"
     val COLUMN_LOSS = "LOSS"
-
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable = "CREATE TABLE " + SCORE_TABLE +
@@ -46,7 +45,7 @@ class CharScoreDatabaseHelper (
 
 
                 for (char in charList){
-                    if (char.charId == charId){
+                    if (char.id == charId){
                         char.wins = wins
                         char.loss = loss
                     }
@@ -61,7 +60,7 @@ class CharScoreDatabaseHelper (
     }
     //lets you send in a single character class and get its win score/loses if they exists in database
     fun getChar (character: Character) : Character{
-        val query = "SELECT * FROM $SCORE_TABLE WHERE $COLUMN_CHAR_ID = "  + character.charId
+        val query = "SELECT * FROM $SCORE_TABLE WHERE $COLUMN_CHAR_ID = "  + character.id
         val db = this.writableDatabase
 
         val cursor = db.rawQuery(query,null)
@@ -84,7 +83,7 @@ class CharScoreDatabaseHelper (
         if (charHasScore(character)){
             val db = this.writableDatabase
             val cv = ContentValues()
-            val charId = character.charId.toString()
+            val charId = character.id.toString()
             cv.put(COLUMN_LOSS, character.loss)
             cv.put(COLUMN_WINS, character.wins)
             val long = db.update(
@@ -98,7 +97,7 @@ class CharScoreDatabaseHelper (
             val db = this.writableDatabase
             val cv = ContentValues()
 
-            cv.put(COLUMN_CHAR_ID, character.charId)
+            cv.put(COLUMN_CHAR_ID, character.id)
             cv.put(COLUMN_LOSS, character.loss)
             cv.put(COLUMN_WINS, character.wins)
             val long = db.insert(SCORE_TABLE,null,cv)
@@ -120,7 +119,7 @@ class CharScoreDatabaseHelper (
             do {
                 val charId = cursor.getInt(1)
 
-                if (charId == character.charId){
+                if (charId == character.id){
                     cursor.close()
                     db.close()
                     return true
