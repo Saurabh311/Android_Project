@@ -12,7 +12,7 @@ class BrowseActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.adapter = RecyclerAdapter(this)
-        TODO("retrieve data and send to RecyclerAdapter(this, -data-)")
+        //TODO("retrieve data and send to RecyclerAdapter(this, -data-)")
 
     }
 }

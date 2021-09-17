@@ -7,30 +7,33 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.android_project.Model.Character
 import com.squareup.picasso.Picasso
 import java.lang.Exception
+import kotlin.random.Random
 
 lateinit var btn_search: Button
 lateinit var btn_random: Button
 lateinit var btn_fight: Button
 lateinit var imgBtn_charInfo: ImageButton
+var activeChar = false
+const val MAX_NUM_CHARSID = 731 // max num om charids in api
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        //https://www.tutorialspoint.com/how-to-implement-android-pull-to-refresh
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //temp code start fredrik
-        val image_url =
-            "https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_19751_e14a0104.jpeg?region=0,0,540,810&width=480"
-        val imageView = findViewById<ImageView>(R.id.characterPic)
-        Picasso.get().load(image_url).into(imageView)
+        if (!activeChar){
+            getRandomChar()
+        }
 
         //temp code Oskar
         //startActivity(Intent(this, HeroInfoActivity::class.java))
-
+        refreshChar()
         initButtons()
-
     }
 
     private fun initButtons() {
@@ -48,6 +51,7 @@ class MainActivity : AppCompatActivity() {
     private fun getHeroInfo() {
         val intent = Intent(this, HeroInfoActivity::class.java).apply {
             // putExtra(character)
+            //suggest to implement the active hero variable in the top
         }
         startActivity(intent)
 
@@ -59,15 +63,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getRandomChar() {
-        // get new random char from API (or from hash?)
 
-        // TEMPORARY :)
-        Toast.makeText(this, "NOW YOU HAVE A NEW RANDOM CHARACTER", Toast.LENGTH_LONG).show()
+        val randomCharidInRange = Random.nextInt(1, MAX_NUM_CHARSID)
+        //!!activechar = method that returns a api response character from a random heroid ask kristoffer
+        val image_url =
+            "https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_19751_e14a0104.jpeg?region=0,0,540,810&width=480"
+        val imageView = findViewById<ImageView>(R.id.characterPic)
+        Picasso.get().load(image_url).into(imageView)  //!!!the url will be changed to character url later from activechar
+
+    }
+
+    private fun refreshChar(){
+        var refresh = findViewById<SwipeRefreshLayout>(R.id.swipeRefresh)
+        refresh.setOnRefreshListener{
+            getRandomChar()
+            refresh.isRefreshing = false
+        }
+
     }
 
     private fun startFight() {
         val intent = Intent(this, GameActivity::class.java).apply {
-          //  putExtra(character) // send selected character
+          //  putExtra(character) // send selected character wich is the active hero
         }
         startActivity(intent)
     }
