@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val client = APIclient.apiService.fetchCharacterByName("a")
+        val client = APIclient.apiService.fetchCharacterByName("Batman")
         client.enqueue(object : retrofit2.Callback<CharacterResponse> {
             override fun onResponse(
                 call: Call<CharacterResponse>,
