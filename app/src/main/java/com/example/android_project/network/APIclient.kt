@@ -1,13 +1,16 @@
 package com.example.android_project.network
 
+import android.util.Log
 import com.example.android_project.model.CharacterResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 object APIclient {
 
@@ -31,6 +34,25 @@ object APIclient {
 
     val apiService: ApiService by lazy {
         retroFit.create(ApiService::class.java)
+    }
+
+    fun searchHeroByName(query: String) {
+        val query = query;
+        val client = APIclient.apiService.fetchCharacterByName(query)
+        client.enqueue(object : retrofit2.Callback<CharacterResponse> {
+            override fun onResponse(
+                call: Call<CharacterResponse>,
+                response: Response<CharacterResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("characters", "" + response.body())
+                }
+            }
+
+            override fun onFailure(call: Call<CharacterResponse>, t: Throwable) {
+                Log.e("failed", "" + t.message)
+            }
+        })
     }
 }
 

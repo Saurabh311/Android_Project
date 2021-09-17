@@ -12,4 +12,5 @@
     <string name="whoWin">Who will win this fight?</string>
     <string name="wins">Wins:</string>
     <string name="losses">Losses:</string>
+    <string name="go">Go</string>
 </resources>
