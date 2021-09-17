@@ -55,8 +55,4 @@ dependencies {
 
     //image loading library
     implementation 'com.squareup.picasso:picasso:2.71828'
-
-
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
 }
