@@ -22,3 +22,5 @@ data class Character (
 data class Img (
     val url: String,
         )
+
+
