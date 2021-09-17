@@ -25,21 +25,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val client = APIclient.apiService.fetchCharacterByName("Batman")
-        client.enqueue(object : retrofit2.Callback<CharacterResponse> {
-            override fun onResponse(
-                call: Call<CharacterResponse>,
-                response: Response<CharacterResponse>
-            ) {
-                if (response.isSuccessful) {
-                    Log.d("characters", "" + response.body())
-                }
-            }
-
-            override fun onFailure(call: Call<CharacterResponse>, t: Throwable) {
-                Log.e("failed", "" + t.message)
-            }
-        })
 
         //temp code start fredrik
         val image_url =
