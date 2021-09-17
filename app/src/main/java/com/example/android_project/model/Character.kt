@@ -12,7 +12,6 @@ data class Character (
 
 
 
-
     var wins: Int? = null,
     var loss: Int? = null,
 
@@ -22,5 +21,6 @@ data class Character (
 data class Img (
     val url: String,
         )
+
 
 

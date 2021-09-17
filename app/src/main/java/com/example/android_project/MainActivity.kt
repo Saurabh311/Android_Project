@@ -13,7 +13,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.android_project.Model.Character
+import com.example.android_project.model.Character
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 import kotlin.random.Random
