@@ -12,9 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Project">
         <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".HeroInfoActivity"
+            android:exported="true" />
+        <activity
+            android:parentActivityName=".MainActivity"
             android:name=".BrowseActivity"
             android:exported="true" />
-      <activity
+        <activity
+            android:parentActivityName=".MainActivity"
             android:name=".GameActivity"
             android:exported="true" />
         <activity

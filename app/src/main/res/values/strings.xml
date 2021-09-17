@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android_Project</string>
+    <string name="app_name">CLASH OF HEROES</string> //temp name
     <string name="characterName">Character Name</string>
     <string name="characterImgPlaceHolder">Character pic</string>
     <string name="buttonFight">Fight</string>
@@ -8,4 +8,8 @@
     <string name="vs">VS</string>
     <string name="whoWillWin">Who will win?</string>
     <string name="select">Select</string>
+    <string name="btn_back">Back</string>
+    <string name="whoWin">Who will win this fight?</string>
+    <string name="wins">Wins:</string>
+    <string name="losses">Losses:</string>
 </resources>

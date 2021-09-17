@@ -1,31 +1,44 @@
 package com.example.android_project
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import com.squareup.picasso.Picasso
 
-lateinit var iv_hero1: ImageView
-lateinit var iv_hero2: ImageView
-lateinit var tv_hero1: TextView
-lateinit var tv_hero2: TextView
-lateinit var btn_hero1: Button
-lateinit var btn_hero2: Button
 
+lateinit var tv_heroName1: TextView
+lateinit var tv_heroName2: TextView
+lateinit var btn_heroInfo1: Button
+lateinit var btn_heroInfo2: Button
+lateinit var cv_hero2: CardView
 class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
 
-        //temp code start Oskar
-        val image_url = "https://static01.nyt.com/images/2020/09/21/multimedia/21parenting-superhero/21parenting-superhero-superJumbo.jpg?quality=90&auto=webp"
-        val imageView = findViewById<ImageView>(R.id.iv_hero1)
-        val imageView2 = findViewById<ImageView>(R.id.iv_hero2)
-        Picasso.get().load(image_url).into(imageView)
-        Picasso.get().load(image_url).into(imageView2)
 
+
+
+
+    }
+
+    fun selectHero(view: View) {
+        val id = view.id.toString()
+        if (id == "cv_hero2") {
+            Toast.makeText(this, "HERO 2 WINS!!!!", Toast.LENGTH_LONG).show()
+
+        }
+    }
+
+    fun getHeroInfo(view: View) {
+        val intent = Intent(this, HeroInfoActivity::class.java)
+        startActivity(intent)
     }
 }
