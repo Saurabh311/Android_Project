@@ -36,7 +36,7 @@ class BrowseActivity : AppCompatActivity() {
         val query = et_searchHero.text.toString()
         if(query != "") {
             et_searchHero.text.clear()
-            APIclient.searchHeroByName(query)
+            //APIclient.searchHeroByName(query)
         } else {
             Toast.makeText(this, "Enter at least one character to search for heroes", Toast.LENGTH_SHORT).show()
         }

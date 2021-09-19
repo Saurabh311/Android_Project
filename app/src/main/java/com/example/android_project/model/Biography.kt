@@ -1,6 +1,7 @@
 package com.example.android_project.model
 
 import com.squareup.moshi.Json
+import java.io.Serializable
 
 data class Biography (
     @Json(name = "full-name")
@@ -13,4 +14,4 @@ data class Biography (
     val publisher: String,
     @Json(name = "alignment")
     val alignment: String,
-        )
+        ) : Serializable

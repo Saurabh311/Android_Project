@@ -1,6 +1,7 @@
 package com.example.android_project.model
 
 import com.squareup.moshi.Json
+import java.io.Serializable
 
 data class Appearance (
     @Json(name = "gender")
@@ -15,4 +16,4 @@ data class Appearance (
     val eyeColor: String,
     @Json(name = "hair-color")
     val hairColor: String,
-        )
+        ) : Serializable

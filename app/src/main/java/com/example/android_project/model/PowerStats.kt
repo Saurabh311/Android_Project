@@ -1,6 +1,7 @@
 package com.example.android_project.model
 
 import com.squareup.moshi.Json
+import java.io.Serializable
 
 data class PowerStats (
     @Json(name = "intelligence")
@@ -15,4 +16,4 @@ data class PowerStats (
     val power: String,
     @Json(name = "combat")
     val combat: String,
-        )
+        ) : Serializable
