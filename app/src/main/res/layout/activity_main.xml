@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A1E91E63"
     tools:context=".MainActivity">
 
     <TextView
@@ -23,67 +24,86 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_hero1"
+        android:layout_width="386dp"
+        android:layout_height="450dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="113dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="164dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:scaleType="centerCrop"
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
-        android:layout_width="377dp"
-        android:layout_height="304dp"
-        android:layout_marginTop="76dp"
+        app:cardBackgroundColor="#FFFAFC"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp"
+        app:contentPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/characterName"
-        tools:context=".MainActivity">
+        app:layout_constraintVertical_bias="0.522">
 
-    <ImageButton
-        android:id="@+id/characterPic"
-        android:layout_width="380dp"
-        android:layout_height="213dp"
-        android:layout_marginTop="56dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/characterImgPlaceHolder"
-        android:background="@android:color/transparent"
-        app:cardCornerRadius="6dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/characterName" />
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="334dp"
+            android:layout_height="289dp"
+            android:layout_marginTop="10dp"
+            android:translationX="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/characterName"
+            tools:context=".MainActivity">
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            <ImageButton
+                android:id="@+id/characterPic"
+                android:layout_width="380dp"
+                android:layout_height="213dp"
+                android:layout_marginTop="56dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/characterImgPlaceHolder"
+                android:scaleType="centerCrop"
+                app:cardCornerRadius="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/characterName" />
 
-    <Button
-        android:id="@+id/buttonRandomChar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/buttonRandomChar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swipeRefresh"
-        app:layout_constraintVertical_bias="0.0" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <Button
-        android:id="@+id/buttonSearchChar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="@string/buttonSearchHero"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swipeRefresh"
-        app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/buttonFight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonFight"
+            android:translationX="145dp"
+            android:translationY="350dp"
+            android:backgroundTint="#C2185B"
+            app:strokeColor="#C2185B"/>
 
-    <Button
-        android:id="@+id/buttonFight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="@string/buttonFight"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/swipeRefresh"
-        app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/buttonSearchChar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonSearchHero"
+            android:translationX="215dp"
+            android:translationY="300dp"
+            android:backgroundTint="#C2185B"
+            app:strokeColor="#C2185B"/>
 
+        <Button
+            android:id="@+id/buttonRandomChar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonRandomChar"
+            android:translationX="19dp"
+            android:translationY="300dp"
+            android:backgroundTint="#C2185B"
+            app:strokeColor="#C2185B"/>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
