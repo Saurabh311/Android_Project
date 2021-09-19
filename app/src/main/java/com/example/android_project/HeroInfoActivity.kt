@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android_project.R
+import com.example.android_project.model.Character
+import com.squareup.picasso.Picasso
 
 class HeroInfoActivity: AppCompatActivity() {
     lateinit var tv_heroName: TextView
@@ -14,11 +16,14 @@ class HeroInfoActivity: AppCompatActivity() {
     lateinit var iv_heroImage: ImageView
     lateinit var tv_heroDescription: TextView
     lateinit var btn_backButton: Button
-
+    lateinit var activeChar : Character
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_heroinfo)
+
+        val intent = getIntent()
+        activeChar = (intent.getSerializableExtra("activeChar") as Character?)!!
 
         tv_heroName = findViewById(R.id.hi_heroName)
         tv_heroScore = findViewById(R.id.hi_score)
@@ -27,8 +32,10 @@ class HeroInfoActivity: AppCompatActivity() {
         btn_backButton = findViewById(R.id.hi_btn_back)
 
         // temp codes
-        tv_heroName.setText("Iron Man")
-        iv_heroImage.setImageResource(R.drawable.ironman)
+
+        tv_heroName.setText(activeChar.name)
+
+        Picasso.get().load(activeChar.img?.url).into(iv_heroImage)
         tv_heroScore.setText(" Score: 20")
 
 

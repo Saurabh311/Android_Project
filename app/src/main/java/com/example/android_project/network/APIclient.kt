@@ -1,6 +1,7 @@
 package com.example.android_project.network
 
 import android.util.Log
+import com.example.android_project.model.Character
 import com.example.android_project.model.CharacterResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -36,24 +37,7 @@ object APIclient {
         retroFit.create(ApiService::class.java)
     }
 
-    fun searchHeroByName(query: String) {
-        val query = query;
-        val client = APIclient.apiService.fetchCharacterByName(query)
-        client.enqueue(object : retrofit2.Callback<CharacterResponse> {
-            override fun onResponse(
-                call: Call<CharacterResponse>,
-                response: Response<CharacterResponse>
-            ) {
-                if (response.isSuccessful) {
-                    Log.d("characters", "" + response.body())
-                }
-            }
 
-            override fun onFailure(call: Call<CharacterResponse>, t: Throwable) {
-                Log.e("failed", "" + t.message)
-            }
-        })
-    }
 }
 
 interface ApiService {
@@ -62,5 +46,5 @@ interface ApiService {
         @Path("name") name: String) : Call<CharacterResponse>
     @GET("{id}")
     fun fetchCharacterById(
-        @Path("id") id: String) : Call<CharacterResponse>
+        @Path("id") id: String) : Call<Character>
 }

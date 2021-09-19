@@ -1,6 +1,7 @@
 package com.example.android_project.model
 
 import com.squareup.moshi.Json
+import java.io.Serializable
 
 data class Character (
     @Json(name = "id")
@@ -26,7 +27,7 @@ data class Character (
     var loss: Int? = null,
 
 
-        )
+        ) : Serializable
 
 
 
