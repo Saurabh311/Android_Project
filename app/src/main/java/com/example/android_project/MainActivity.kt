@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if (intent.hasExtra("activeChar")) {
+            activeChar = intent.getSerializableExtra("activeChar") as Character
+        }
+        
         charImageView = findViewById(R.id.characterPic)
         charName = findViewById(R.id.characterName)
 
