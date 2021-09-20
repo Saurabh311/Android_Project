@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import androidx.lifecycle.Observer
 import com.example.android_project.network.APIclient
 import retrofit2.Call
 import retrofit2.Response
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.example.android_project.model.Character
+import com.example.android_project.network.APIhelper
 import com.squareup.picasso.Picasso
 import kotlin.random.Random
 
@@ -28,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var test = APIhelper()
+
         if (intent.hasExtra("activeChar")) {
             activeChar = intent.getSerializableExtra("activeChar") as Character
         }
@@ -42,6 +46,14 @@ class MainActivity : AppCompatActivity() {
         }
         refreshChar()
         initButtons()
+
+        //kommer alltid vara groot
+        test.getCharById("70").observe(this, Observer {
+            //gör vad du vill med datan här, "it" är objektet
+            println(it)
+            println(it.name)
+            println(it.bio?.fullName)
+        })
     }
 
     private fun initButtons() {
