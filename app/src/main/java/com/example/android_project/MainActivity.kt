@@ -32,6 +32,10 @@ class MainActivity : AppCompatActivity() {
 
         var test = APIhelper()
 
+        if (intent.hasExtra("activeChar")) {
+            activeChar = intent.getSerializableExtra("activeChar") as Character
+        }
+        
         charImageView = findViewById(R.id.characterPic)
         charName = findViewById(R.id.characterName)
 
