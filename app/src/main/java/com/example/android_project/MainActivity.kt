@@ -18,7 +18,8 @@ lateinit var btn_search: Button
 lateinit var btn_random: Button
 lateinit var btn_fight: Button
 lateinit var imgBtn_charInfo: ImageButton
-lateinit var activeChar : Character
+lateinit var activeChar1 : Character
+lateinit var activeChar2 : Character
 const val MAX_NUM_CHARSID = 731 // max num om charids in api
 lateinit var charImageView : ImageView
 lateinit var charName : TextView
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         charImageView = findViewById(R.id.characterPic)
         charName = findViewById(R.id.characterName)
 
-        if (::activeChar.isInitialized){ // checks if we need to get a new hero
+        if (::activeChar1.isInitialized){ // checks if we need to get a new hero
             initViews()
         }else{
             getRandomChar()
@@ -54,8 +55,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getHeroInfo() {
+
         val intent = Intent(this, HeroInfoActivity::class.java).apply {
-            putExtra("activeChar", activeChar)
+            putExtra("activeChar1", activeChar1)
         }
         startActivity(intent)
 
@@ -91,14 +93,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setActiveChar (char : Character){
-        activeChar = char
+        activeChar1 = char
         initViews()
     }
 
     fun initViews () {
 
-        Picasso.get().load(activeChar.img?.url).into(charImageView)
-        charName.text = activeChar.name
+        Picasso.get().load(activeChar1.img?.url).into(charImageView)
+        charName.text = activeChar1.name
     }
 
     private fun refreshChar(){
@@ -112,9 +114,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun startFight() {
 
-        if (::activeChar.isInitialized){
+        if (::activeChar1.isInitialized){
             val intent = Intent(this, GameActivity::class.java).apply {
-                putExtra("activeChar", activeChar) // send selected character wich is the active hero
+                putExtra("activeChar1", activeChar1) // send selected character wich is the active hero
+               // putExtra("activeChar2", activeChar2) // send selected character wich is the active hero
             }
             startActivity(intent)
         }else{
@@ -122,37 +125,5 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    /*
-    methods that shows how to add character to database and getting lose/wins from a list
-    this can be removed when we want //fredrik
 
-    fun addCharScore (view: View){
-        val dbHelper = CharScoreDatabaseHelper (this)
-         val charid = findViewById<EditText>(R.id.charid).text.toString()
-        val wins = findViewById<EditText>(R.id.winid).text.toString()
-        val loss = findViewById<EditText>(R.id.lossid).text.toString()
-
-        try {
-            val char = Character(charid.toInt(), wins.toInt(), loss.toInt())
-            dbHelper.addCharScore(char)
-
-        }catch (e:Exception){
-            println("character was not modified/added")
-        }
-
-
-    }
-    fun check (view: View){
-        val dbHelper = CharScoreDatabaseHelper (this)
-        var listchar = mutableListOf<Character>()
-        val char1 = Character(1,2,3)
-        val char2 = Character(2,3,4)
-        listchar.add(char1)
-        listchar.add(char2)
-        val list  = dbHelper.getAllCharScores(listchar)
-        println(list.get(0).wins)
-        println(list.size)
-
-    }
-     */
 }

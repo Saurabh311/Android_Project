@@ -23,7 +23,7 @@ class HeroInfoActivity: AppCompatActivity() {
         setContentView(R.layout.activity_heroinfo)
 
         val intent = getIntent()
-        activeChar = (intent.getSerializableExtra("activeChar") as Character?)!!
+        activeChar = (intent.getSerializableExtra("activeChar1") as Character?)!!
 
         tv_heroName = findViewById(R.id.hi_heroName)
         tv_heroScore = findViewById(R.id.hi_score)
