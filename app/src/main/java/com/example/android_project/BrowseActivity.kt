@@ -70,7 +70,7 @@ class BrowseActivity : AppCompatActivity() {
                     //Log.d("Character: ", "" + result)
 
                     result?.let {
-                        val adapter = RecyclerAdapter(result)
+                        val adapter = RecyclerAdapter(result, this@BrowseActivity)
                         val recyclerView: RecyclerView = findViewById(R.id.rv_heroList)
                         recyclerView.adapter = adapter
                         recyclerView?.layoutManager = LinearLayoutManager(this@BrowseActivity)
@@ -83,6 +83,10 @@ class BrowseActivity : AppCompatActivity() {
             }
         })
     }
+
+
+
+
 
 
 }
