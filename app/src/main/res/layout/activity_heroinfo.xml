@@ -4,79 +4,142 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#A1E91E63"
     android:textAlignment="center">
 
     <TextView
         android:id="@+id/hi_heroName"
-        android:layout_width="410dp"
-        android:layout_height="62dp"
-        android:autoText="false"
-        android:background="#03A9F4"
+        android:layout_width="353dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="20dp"
         android:elegantTextHeight="true"
         android:text="TextView"
         android:textAlignment="center"
-        android:textColor="#F4F4F6"
+        android:textColor="@color/white"
         android:textDirection="firstStrongRtl"
         android:textIsSelectable="false"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.023" />
 
-    <ImageView
-        android:id="@+id/hi_heroImage"
-        android:layout_width="222dp"
-        android:layout_height="204dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="390dp"
+        android:layout_height="213dp"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="20dp"
+        android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hi_heroName"
-        app:layout_constraintVertical_bias="0.062"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133">
 
-    <TextView
-        android:id="@+id/hi_score"
-        android:layout_width="291dp"
-        android:layout_height="45dp"
-        android:autoText="true"
-        android:background="#03A9F4"
-        android:elegantTextHeight="true"
-        android:freezesText="false"
-        android:nestedScrollingEnabled="true"
-        android:textAlignment="textStart"
-        android:textColor="#F8F7F7"
-        android:textIsSelectable="false"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/hi_heroDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hi_heroImage"
-        app:layout_constraintVertical_bias="0.494" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center|left"
+            android:layout_margin="15dp">
 
-    <TextView
-        android:id="@+id/hi_heroDescription"
-        android:layout_width="352dp"
-        android:layout_height="190dp"
-        android:layout_marginBottom="104dp"
-        android:background="#03A9F4"
-        android:text="About the hero"
-        android:textAlignment="center"
-        android:textColor="#F4F2F2"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.389"
-        app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/hi_heroImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ironman"></ImageView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="190dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center|right"
+            android:layout_margin="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:outlineAmbientShadowColor="@color/black"
+                android:clipToOutline="true"
+                android:src="@drawable/ironman"></TextView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00BCD4">
+
+                <TextView
+                    android:id="@+id/hi_fullName"
+                    android:layout_width="185dp"
+                    android:layout_height="38dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toTopOf="@+id/hi_gender"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/hi_gender"
+                    android:layout_width="189dp"
+                    android:layout_height="29dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toTopOf="@+id/hi_work"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.846" />
+
+                <TextView
+                    android:id="@+id/hi_work"
+                    android:layout_width="188dp"
+                    android:layout_height="41dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toTopOf="@+id/hi_score"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.883" />
+
+                <TextView
+                    android:id="@+id/hi_score"
+                    android:layout_width="188dp"
+                    android:layout_height="26dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.958" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 
     <Button
         android:id="@+id/hi_btn_back"
@@ -87,6 +150,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hi_heroDescription"
         app:layout_constraintVertical_bias="0.698" />
 </androidx.constraintlayout.widget.ConstraintLayout>
