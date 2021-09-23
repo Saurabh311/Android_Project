@@ -48,10 +48,10 @@ class MainActivity : AppCompatActivity() {
 
 
         //places an observer to update the UI every time the character in viewModel changes
-        viewModel.getCharacter().observe(this, Observer {
-            charName.text = it.name
-            Picasso.get().load(it.img?.url).into(charImageView)
-            activeChar = it
+        viewModel.getCharacter().observe(this, Observer { character ->
+            charName.text = character.name
+            Picasso.get().load(character.img?.url).into(charImageView)
+            activeChar = character
         })
 
         initButtons()
