@@ -42,8 +42,8 @@ object APIclient {
 
 interface ApiService {
     @GET("search/{name}")
-    suspend fun fetchCharacterByName(
-        @Path("name") name: String) : CharacterResponse
+    fun fetchCharacterByName(
+        @Path("name") name: String) : Call<CharacterResponse>
     @GET("{id}")
     suspend fun fetchCharacterById(
         @Path("id") id: String) : Character
