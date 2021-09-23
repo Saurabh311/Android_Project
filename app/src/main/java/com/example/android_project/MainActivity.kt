@@ -35,16 +35,18 @@ class MainActivity : AppCompatActivity() {
         charImageView = findViewById(R.id.characterPic)
         charName = findViewById(R.id.characterName)
 
-
-        viewModel.searchById("70")
         observeCharacterChange()
 
+        val intent = getIntent()
+        if (intent.hasExtra("activeChar")) {
+            activeChar = intent.getSerializableExtra("activeChar") as Character
+        }
         if (::activeChar.isInitialized){ // checks if we need to get a new hero
             initViews()
         }else{
-            getRandomChar()
+            viewModel.randomCharacter()
         }
-        refreshChar()
+
         initButtons()
         refreshChar()
     }
@@ -101,14 +103,7 @@ class MainActivity : AppCompatActivity() {
         charName.text = activeChar.name
     }
 
-    private fun refreshChar(){
-        var refresh = findViewById<SwipeRefreshLayout>(R.id.swipeRefresh)
-        refresh.setOnRefreshListener{
-            getRandomChar()
-            refresh.isRefreshing = false
-        }
 
-    }
 
     private fun startFight() {
 
