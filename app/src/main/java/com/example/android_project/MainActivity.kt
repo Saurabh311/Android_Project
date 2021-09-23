@@ -35,28 +35,27 @@ class MainActivity : AppCompatActivity() {
         charImageView = findViewById(R.id.characterPic)
         charName = findViewById(R.id.characterName)
 
-        observeCharacterChange()
 
         val intent = getIntent()
         if (intent.hasExtra("activeChar")) {
             activeChar = intent.getSerializableExtra("activeChar") as Character
         }
-        if (::activeChar.isInitialized){ // checks if we need to get a new hero
-            initViews()
+        if (::activeChar.isInitialized){ // if activeChar exists change the viewModel
+            viewModel.setCharacter(activeChar)
         }else{
             viewModel.randomCharacter()
         }
 
+
+        //places an observer to update the UI every time the character in viewModel changes
+        viewModel.getCharacter().observe(this, Observer { character ->
+            charName.text = character.name
+            Picasso.get().load(character.img?.url).into(charImageView)
+            activeChar = character
+        })
+
         initButtons()
         refreshChar()
-    }
-
-    private fun observeCharacterChange() {
-        viewModel.getCharacter().observe(this, Observer {
-            charName.text = it.name
-            Picasso.get().load(it.img?.url).into(charImageView)
-            activeChar = it
-        })
     }
 
     private fun initButtons() {
@@ -69,7 +68,6 @@ class MainActivity : AppCompatActivity() {
         btn_fight.setOnClickListener { startFight() }
         btn_random.setOnClickListener {
             viewModel.randomCharacter()
-            observeCharacterChange()
         }
         btn_search.setOnClickListener { browseChars() }
         imgBtn_charInfo.setOnClickListener { getHeroInfo() }
@@ -79,7 +77,6 @@ class MainActivity : AppCompatActivity() {
         var refresh = findViewById<SwipeRefreshLayout>(R.id.swipeRefresh)
         refresh.setOnRefreshListener {
             viewModel.randomCharacter()
-            observeCharacterChange()
             refresh.isRefreshing = false
         }
     }
@@ -97,19 +94,14 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun initViews () {
-
-        Picasso.get().load(activeChar.img?.url).into(charImageView)
-        charName.text = activeChar.name
-    }
-
-
-
     private fun startFight() {
 
         if (::activeChar.isInitialized) {
             val intent = Intent(this, GameActivity::class.java).apply {
-                putExtra("activeChar", activeChar) // send selected character wich is the active hero
+                putExtra(
+                    "activeChar",
+                    activeChar
+                ) // send selected character wich is the active hero
             }
             startActivity(intent)
         } else {

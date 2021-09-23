@@ -40,4 +40,10 @@ class MainViewModel : ViewModel(){
             character.value = apihelper.getCharById(Random.nextInt(1, MAX_NUM_CHARSID).toString())
         }
     }
+
+    fun setCharacter(c: Character) {
+        viewModelScope.launch {
+            character.value = c
+        }
+    }
 }
