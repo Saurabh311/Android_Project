@@ -1,5 +1,7 @@
 package com.example.android_project.network
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
@@ -13,4 +15,5 @@ class APIhelper {
     suspend fun getCharById(id: String) = client.fetchCharacterById(id)
 
     suspend fun getCharByName(name: String) = client.fetchCharacterByName(name)
+
 }
