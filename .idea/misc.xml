@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Oskar/Documents/Programmering/Javautvecklare/AndroidDevelopment/Projekt/Androidstudio_Project/app/src/main/res/layout/activity_browse.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Oskar/Documents/Programmering/Javautvecklare/AndroidDevelopment/Projekt/Androidstudio_Project/app/src/main/res/layout/activity_game.xml" value="0.264" />
-        <entry key="..\:/Users/Oskar/Documents/Programmering/Javautvecklare/AndroidDevelopment/Projekt/Androidstudio_Project/app/src/main/res/layout/activity_heroinfo.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Oskar/Documents/Programmering/Javautvecklare/AndroidDevelopment/Projekt/Androidstudio_Project/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Oskar/Documents/Programmering/Javautvecklare/AndroidDevelopment/Projekt/Androidstudio_Project/app/src/main/res/layout/recycler_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Saura/OneDrive/Documents/Androidstudio_Project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/Saura/OneDrive/Documents/Androidstudio_Project/app/src/main/res/layout/activity_browse.xml" value="0.264" />
+        <entry key="..\:/Users/Saura/OneDrive/Documents/Androidstudio_Project/app/src/main/res/layout/activity_game.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Saura/OneDrive/Documents/Androidstudio_Project/app/src/main/res/layout/activity_hero_info.xml" value="0.264" />
+        <entry key="..\:/Users/Saura/OneDrive/Documents/Androidstudio_Project/app/src/main/res/layout/activity_heroinfo.xml" value="0.4" />
+        <entry key="..\:/Users/Saura/OneDrive/Documents/Androidstudio_Project/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Saura/OneDrive/Documents/Androidstudio_Project/app/src/main/res/layout/cardview_layout.xml" value="0.264" />
+        <entry key="..\:/Users/Saura/OneDrive/Documents/Androidstudio_Project/app/src/main/res/layout/recycler_layout.xml" value="0.264" />
       </map>
     </option>
   </component>
@@ -16,5 +19,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
   </component>
 </project>
