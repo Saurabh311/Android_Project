@@ -59,7 +59,7 @@ class CharScoreDatabaseHelper (
         return charList
     }
     //lets you send in a single character class and get its win score/loses if they exists in database
-    fun getChar (character: Character) : Character{
+    fun getCharScore (character: Character) : Character{
         val query = "SELECT * FROM $SCORE_TABLE WHERE $COLUMN_CHAR_ID = "  + character.id
         val db = this.writableDatabase
 
@@ -72,6 +72,9 @@ class CharScoreDatabaseHelper (
                 character.wins = wins
                 character.loss = loss
             }while (cursor.moveToNext())
+        }else{
+            character.wins = 0
+            character.loss = 0
         }
         cursor.close()
         db.close()

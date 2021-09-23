@@ -35,9 +35,17 @@ class MainActivity : AppCompatActivity() {
         charImageView = findViewById(R.id.characterPic)
         charName = findViewById(R.id.characterName)
 
-
-        viewModel.searchById("70")
         observeCharacterChange()
+
+        val intent = getIntent()
+        if (intent.hasExtra("activeChar")) {
+            activeChar = intent.getSerializableExtra("activeChar") as Character
+        }
+        if (::activeChar.isInitialized){ // checks if we need to get a new hero
+            initViews()
+        }else{
+            viewModel.randomCharacter()
+        }
 
         initButtons()
         refreshChar()
@@ -89,14 +97,19 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun initViews () {
+
+        Picasso.get().load(activeChar.img?.url).into(charImageView)
+        charName.text = activeChar.name
+    }
+
+
+
     private fun startFight() {
 
         if (::activeChar.isInitialized) {
             val intent = Intent(this, GameActivity::class.java).apply {
-                putExtra(
-                    "activeChar",
-                    activeChar
-                ) // send selected character wich is the active hero
+                putExtra("activeChar", activeChar) // send selected character wich is the active hero
             }
             startActivity(intent)
         } else {
