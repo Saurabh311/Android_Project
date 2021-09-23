@@ -15,22 +15,23 @@
         android:elegantTextHeight="true"
         android:text="TextView"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textDirection="firstStrongRtl"
+        android:textColor="@color/black"
         android:textIsSelectable="false"
-        android:textSize="34sp"
+        android:textSize="34dp"
         android:textStyle="bold|italic"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.024" />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="390dp"
-        android:layout_height="213dp"
+        android:layout_width="388dp"
+        android:layout_height="219dp"
         android:layout_margin="20dp"
         android:background="@color/black"
         app:cardCornerRadius="20dp"
@@ -39,10 +40,10 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133">
+        app:layout_constraintVertical_bias="0.119">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="150dp"
+            android:layout_width="121dp"
             android:layout_height="170dp"
             android:layout_gravity="center|left"
             android:layout_margin="15dp">
@@ -50,34 +51,29 @@
 
             <ImageView
                 android:id="@+id/hi_heroImage"
-                android:layout_width="match_parent"
+                android:layout_width="124dp"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ironman"></ImageView>
+                android:src="@drawable/ironman" />
+
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="190dp"
+            android:layout_width="224dp"
             android:layout_height="170dp"
             android:layout_gravity="center|right"
             android:layout_margin="15dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToOutline="true"
-                android:outlineAmbientShadowColor="@color/black"
-                android:src="@drawable/ironman"></TextView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="168dp"
                 android:background="#00BCD4">
 
                 <TextView
                     android:id="@+id/hi_fullName"
-                    android:layout_width="185dp"
-                    android:layout_height="38dp"
+                    android:layout_width="220dp"
+                    android:layout_height="43dp"
                     android:text="TextView"
                     android:textColor="@android:color/black"
                     android:textSize="14dp"
@@ -86,12 +82,12 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="0.437" />
 
                 <TextView
                     android:id="@+id/hi_gender"
-                    android:layout_width="189dp"
-                    android:layout_height="29dp"
+                    android:layout_width="219dp"
+                    android:layout_height="21dp"
                     android:text="TextView"
                     android:textColor="@android:color/black"
                     android:textSize="14dp"
@@ -100,12 +96,12 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.846" />
+                    app:layout_constraintVertical_bias="0.812" />
 
                 <TextView
                     android:id="@+id/hi_work"
-                    android:layout_width="188dp"
-                    android:layout_height="41dp"
+                    android:layout_width="221dp"
+                    android:layout_height="37dp"
                     android:text="TextView"
                     android:textColor="@android:color/black"
                     android:textSize="14dp"
@@ -114,12 +110,12 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.883" />
+                    app:layout_constraintVertical_bias="0.884" />
 
                 <TextView
                     android:id="@+id/hi_score"
-                    android:layout_width="188dp"
-                    android:layout_height="26dp"
+                    android:layout_width="222dp"
+                    android:layout_height="36dp"
                     android:text="TextView"
                     android:textColor="@android:color/black"
                     android:textSize="14dp"
@@ -128,7 +124,8 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.958" />
+                    app:layout_constraintVertical_bias="0.961" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
@@ -138,23 +135,25 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChart"
-        android:layout_width="372dp"
-        android:layout_height="364dp"
+        android:layout_width="404dp"
+        android:layout_height="367dp"
+        android:background="#A1E91E63"
         app:layout_constraintBottom_toTopOf="@+id/hi_btn_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.861" />
 
     <Button
         android:id="@+id/hi_btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="84dp"
+        android:layout_height="41dp"
         android:text="@string/btn_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintTop_toBottomOf="@+id/barChart" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
