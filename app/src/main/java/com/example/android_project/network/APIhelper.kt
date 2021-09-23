@@ -1,5 +1,7 @@
 package com.example.android_project.network
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
@@ -25,7 +27,7 @@ class APIhelper {
         return liveData
     }
 
-    fun getCharByName(name: String): LiveData<CharacterResponse> {
+    fun getCharByName(name: String, context: Context): LiveData<CharacterResponse> {
         val liveData = MutableLiveData<CharacterResponse>()
 
         client.fetchCharacterByName(name).enqueue(object : retrofit2.Callback<CharacterResponse> {
@@ -37,7 +39,7 @@ class APIhelper {
             }
 
             override fun onFailure(call: Call<CharacterResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(context, "No result for '$name'", Toast.LENGTH_SHORT).show()
             }
         })
         return liveData
