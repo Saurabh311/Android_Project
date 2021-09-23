@@ -28,7 +28,6 @@ class HeroInfoActivity: AppCompatActivity() {
     lateinit var activeChar : Character
     lateinit var barEntryArrayList: ArrayList<BarEntry>
     lateinit var barDataSet: BarDataSet
-    //lateinit var barData: BarData
     lateinit var barChart: BarChart
 
 
@@ -68,7 +67,7 @@ class HeroInfoActivity: AppCompatActivity() {
         xValues.add("Speed")
 
         barEntryArrayList = ArrayList()
-        barEntryArrayList.add(BarEntry(intelligence,0, "intellegent"))
+        barEntryArrayList.add(BarEntry(intelligence,0, "ntelligence"))
         barEntryArrayList.add(BarEntry(combat, 1, "Combat"))
         barEntryArrayList.add(BarEntry(durability, 2, "Durability"))
         barEntryArrayList.add(BarEntry(speed, 3, "Speed"))
@@ -78,22 +77,16 @@ class HeroInfoActivity: AppCompatActivity() {
         barDataSet= BarDataSet(barEntryArrayList, "Power Stats")
         val barData= BarData(xValues, barDataSet)
         barChart.data = barData
-        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS, 250)
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS)
         barDataSet.valueTextColor = Color.BLACK
-        barChart.size
-        barDataSet.valueTextSize = 20f
-        barChart.animateXY(2000, 2000)
-
-
-
-
-
+        barChart.setDescription("Power Statistics")
+        barDataSet.valueTextSize = 15f
+        barChart.animateXY(4000, 4000)
 
         btn_backButton.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java).apply {
                 // putExtra(selectedHero)
             }
-
             startActivity(intent)
         }
 
