@@ -14,6 +14,21 @@ class APIhelper {
 
     suspend fun getCharById(id: String) = client.fetchCharacterById(id)
 
-    suspend fun getCharByName(name: String) = client.fetchCharacterByName(name)
+    fun getCharByName(name: String, context: Context): MutableLiveData<CharacterResponse> {
+        val liveData = MutableLiveData<CharacterResponse>()
 
+        client.fetchCharacterByName(name).enqueue(object : retrofit2.Callback<CharacterResponse> {
+            override fun onResponse(
+                call: Call<CharacterResponse>,
+                response: Response<CharacterResponse>
+            ) {
+                liveData.value = response.body()
+            }
+
+            override fun onFailure(call: Call<CharacterResponse>, t: Throwable) {
+                Toast.makeText(context, "No result for '$name'", Toast.LENGTH_SHORT).show()
+            }
+        })
+        return liveData
+    }
 }

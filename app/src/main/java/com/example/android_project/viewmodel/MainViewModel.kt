@@ -1,5 +1,6 @@
 package com.example.android_project.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.*
 import com.example.android_project.MAX_NUM_CHARSID
 import com.example.android_project.model.Character
@@ -28,9 +29,9 @@ class MainViewModel : ViewModel(){
         }
     }
 
-    fun searchByName(name: String) {
+    fun searchByName(name: String, context: Context) {
         viewModelScope.launch {
-            characterList.value = apihelper.getCharByName(name)
+            characterList = apihelper.getCharByName(name, context)
         }
     }
 
