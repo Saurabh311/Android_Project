@@ -24,19 +24,19 @@ class MainActivity : AppCompatActivity() {
     lateinit var charImageView: ImageView
     lateinit var charName: TextView
 
-    lateinit var testView: MainViewModel
+    lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        testView = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         charImageView = findViewById(R.id.characterPic)
         charName = findViewById(R.id.characterName)
 
 
-        testView.searchById("70")
+        viewModel.searchById("70")
         observeCharacterChange()
 
         initButtons()
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeCharacterChange() {
-        testView.getCharacter().observe(this, Observer {
+        viewModel.getCharacter().observe(this, Observer {
             charName.text = it.name
             Picasso.get().load(it.img?.url).into(charImageView)
             activeChar = it
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_fight.setOnClickListener { startFight() }
         btn_random.setOnClickListener {
-            testView.randomCharacter()
+            viewModel.randomCharacter()
             observeCharacterChange()
         }
         btn_search.setOnClickListener { browseChars() }
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     private fun refreshChar() {
         var refresh = findViewById<SwipeRefreshLayout>(R.id.swipeRefresh)
         refresh.setOnRefreshListener {
-            testView.randomCharacter()
+            viewModel.randomCharacter()
             observeCharacterChange()
             refresh.isRefreshing = false
         }
@@ -105,37 +105,5 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    /*
-    methods that shows how to add character to database and getting lose/wins from a list
-    this can be removed when we want //fredrik
 
-    fun addCharScore (view: View){
-        val dbHelper = CharScoreDatabaseHelper (this)
-         val charid = findViewById<EditText>(R.id.charid).text.toString()
-        val wins = findViewById<EditText>(R.id.winid).text.toString()
-        val loss = findViewById<EditText>(R.id.lossid).text.toString()
-
-        try {
-            val char = Character(charid.toInt(), wins.toInt(), loss.toInt())
-            dbHelper.addCharScore(char)
-
-        }catch (e:Exception){
-            println("character was not modified/added")
-        }
-
-
-    }
-    fun check (view: View){
-        val dbHelper = CharScoreDatabaseHelper (this)
-        var listchar = mutableListOf<Character>()
-        val char1 = Character(1,2,3)
-        val char2 = Character(2,3,4)
-        listchar.add(char1)
-        listchar.add(char2)
-        val list  = dbHelper.getAllCharScores(listchar)
-        println(list.get(0).wins)
-        println(list.size)
-
-    }
-     */
 }

@@ -7,17 +7,22 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_project.adapter.RecyclerAdapter
 import com.example.android_project.network.APIhelper
+import com.example.android_project.viewmodel.MainViewModel
 
 class BrowseActivity : AppCompatActivity() {
     lateinit var et_searchHero: EditText
+    lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_browse)
+
+        viewModel = ViewModelProvider(this).get(com.example.android_project.viewmodel.MainViewModel::class.java)
 
         et_searchHero = findViewById(R.id.et_heroSearch)
     }
@@ -35,7 +40,13 @@ class BrowseActivity : AppCompatActivity() {
 
         if (query != "") {
             et_searchHero.text.clear()
-            getHeroes(query)
+            viewModel.searchByName(query)
+            viewModel.getCharacterList().observe(this, Observer {
+                val adapter = it.results?.let { result -> RecyclerAdapter(result, this@BrowseActivity) }
+                val recyclerView: RecyclerView = findViewById(R.id.rv_heroList)
+                recyclerView.adapter = adapter
+                recyclerView?.layoutManager = LinearLayoutManager(this@BrowseActivity)
+            })
 
         } else {
             Toast.makeText(
@@ -46,13 +57,4 @@ class BrowseActivity : AppCompatActivity() {
         }
     }
 
-    fun getHeroes(query: String) {
-        val apiHelper = APIhelper()
-        apiHelper.getCharByName(query, this@BrowseActivity).observe(this, Observer {
-            val adapter = it.results?.let { result -> RecyclerAdapter(result, this@BrowseActivity) }
-            val recyclerView: RecyclerView = findViewById(R.id.rv_heroList)
-            recyclerView.adapter = adapter
-            recyclerView?.layoutManager = LinearLayoutManager(this@BrowseActivity)
-        })
-    }
 }
