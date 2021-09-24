@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
 
         initButtons()
         refreshChar()
+
+
     }
 
     private fun observeCharacterChange() {
@@ -56,6 +58,7 @@ class MainActivity : AppCompatActivity() {
             charName.text = it.name
             Picasso.get().load(it.img?.url).into(charImageView)
             activeChar = it
+            println(activeChar)
         })
     }
 

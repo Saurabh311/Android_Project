@@ -4,6 +4,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.EventLogTags
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -17,7 +19,7 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.squareup.picasso.Picasso
 
-class HeroInfoActivity: AppCompatActivity() {
+class HeroInfoActivity : AppCompatActivity() {
     lateinit var tv_heroName: TextView
     lateinit var tv_heroScore: TextView
     lateinit var iv_heroImage: ImageView
@@ -25,11 +27,10 @@ class HeroInfoActivity: AppCompatActivity() {
     lateinit var tv_gender: TextView
     lateinit var tv_work: TextView
     lateinit var btn_backButton: Button
-    lateinit var activeChar : Character
+    lateinit var activeChar: Character
     lateinit var barEntryArrayList: ArrayList<BarEntry>
     lateinit var barDataSet: BarDataSet
     lateinit var barChart: BarChart
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +47,6 @@ class HeroInfoActivity: AppCompatActivity() {
         tv_fullName = findViewById(R.id.hi_fullName)
         tv_gender = findViewById(R.id.hi_gender)
         tv_work = findViewById(R.id.hi_work)
-        btn_backButton = findViewById(R.id.hi_btn_back)
         barChart = findViewById(R.id.barChart)
 
         tv_heroName.setText(activeChar.name)
@@ -56,10 +56,10 @@ class HeroInfoActivity: AppCompatActivity() {
         tv_gender.setText(" Gender: ${activeChar.appearance?.gender}")
         tv_work.setText(" Work: ${activeChar.work?.occupation}")
 
-        var intelligence :Float = (activeChar.powerStats?.intelligence)!!.toFloat()
-        var combat : Float = (activeChar.powerStats?.combat)!!.toFloat()
-        var durability : Float = (activeChar.powerStats?.durability)!!.toFloat()
-        var speed : Float = (activeChar.powerStats?.speed)!!.toFloat()
+        var intelligence: Float = (activeChar.powerStats?.intelligence)!!.toFloat()
+        var combat: Float = (activeChar.powerStats?.combat)!!.toFloat()
+        var durability: Float = (activeChar.powerStats?.durability)!!.toFloat()
+        var speed: Float = (activeChar.powerStats?.speed)!!.toFloat()
 
         val xValues = ArrayList<String>()
         xValues.add("Intelligence")
@@ -68,15 +68,15 @@ class HeroInfoActivity: AppCompatActivity() {
         xValues.add("Speed")
 
         barEntryArrayList = ArrayList()
-        barEntryArrayList.add(BarEntry(intelligence,0, "intellegent"))
+        barEntryArrayList.add(BarEntry(intelligence, 0, "intellegent"))
         barEntryArrayList.add(BarEntry(combat, 1, "Combat"))
         barEntryArrayList.add(BarEntry(durability, 2, "Durability"))
         barEntryArrayList.add(BarEntry(speed, 3, "Speed"))
 
         println(activeChar.powerStats)
 
-        barDataSet= BarDataSet(barEntryArrayList, "Power Stats")
-        val barData= BarData(xValues, barDataSet)
+        barDataSet = BarDataSet(barEntryArrayList, "Power Stats")
+        val barData = BarData(xValues, barDataSet)
         barChart.data = barData
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS, 250)
         barDataSet.valueTextColor = Color.BLACK
@@ -85,17 +85,15 @@ class HeroInfoActivity: AppCompatActivity() {
         barChart.animateXY(2000, 2000)
 
 
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.hero_info_menu, menu)
+        return true
+    }
 
-
-
-        btn_backButton.setOnClickListener {
-            val intent = Intent(this, GameActivity::class.java).apply {
-                // putExtra(selectedHero)
-            }
-
-            startActivity(intent)
-        }
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        finish()
+        return true
     }
 }
