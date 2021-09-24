@@ -1,6 +1,7 @@
 package com.example.android_project.viewmodel
 
 import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.*
 import com.example.android_project.MAX_NUM_CHARSID
 import com.example.android_project.model.Character
@@ -9,7 +10,7 @@ import com.example.android_project.network.APIhelper
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-class MainViewModel : ViewModel(){
+class MainViewModel : ViewModel() {
     private val apihelper = APIhelper()
 
     private var character: MutableLiveData<Character> = MutableLiveData()
@@ -31,7 +32,14 @@ class MainViewModel : ViewModel(){
 
     fun searchByName(name: String, context: Context) {
         viewModelScope.launch {
-            characterList = apihelper.getCharByName(name, context)
+            val result = kotlin.runCatching {
+                apihelper.getCharByName(name)
+            }.onSuccess { charResponse ->
+                characterList.value = charResponse
+            }.onFailure {
+                Toast.makeText(context, "No result for '$name'", Toast.LENGTH_SHORT).show()
+            }
+            println(result)
         }
     }
 

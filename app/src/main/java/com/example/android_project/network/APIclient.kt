@@ -1,17 +1,13 @@
 package com.example.android_project.network
 
-import android.util.Log
 import com.example.android_project.model.Character
 import com.example.android_project.model.CharacterResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import retrofit2.Call
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 object APIclient {
 
@@ -42,9 +38,12 @@ object APIclient {
 
 interface ApiService {
     @GET("search/{name}")
-    fun fetchCharacterByName(
-        @Path("name") name: String) : Call<CharacterResponse>
+    suspend fun fetchCharacterByName(
+        @Path("name") name: String
+    ): CharacterResponse
+
     @GET("{id}")
     suspend fun fetchCharacterById(
-        @Path("id") id: String) : Character
+        @Path("id") id: String
+    ): Character
 }
