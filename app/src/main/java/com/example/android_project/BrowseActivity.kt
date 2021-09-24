@@ -16,11 +16,22 @@ import com.example.android_project.viewmodel.MainViewModel
 
 class BrowseActivity : AppCompatActivity() {
     lateinit var et_searchHero: EditText
+    lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_browse)
         et_searchHero = findViewById(R.id.et_heroSearch)
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        viewModel.getCharacterList().observe(this, Observer {
+            val adapter = it.results?.let { result -> RecyclerAdapter(result, this@BrowseActivity) }
+            val recyclerView: RecyclerView = findViewById(R.id.rv_heroList)
+            recyclerView.adapter = adapter
+            recyclerView?.layoutManager = LinearLayoutManager(this@BrowseActivity)
+        })
+
+
     }
 
     fun searchForHero(view: View) {
@@ -36,7 +47,7 @@ class BrowseActivity : AppCompatActivity() {
 
         if (query != "") {
             et_searchHero.text.clear()
-            getHeroes(query)
+            viewModel.searchByName(query, this)
 
         } else {
             Toast.makeText(
@@ -47,13 +58,4 @@ class BrowseActivity : AppCompatActivity() {
         }
     }
 
-    fun getHeroes(query: String) {
-        val apiHelper = APIhelper()
-        apiHelper.getCharByName(query, this@BrowseActivity).observe(this, Observer {
-            val adapter = it.results?.let { result -> RecyclerAdapter(result, this@BrowseActivity) }
-            val recyclerView: RecyclerView = findViewById(R.id.rv_heroList)
-            recyclerView.adapter = adapter
-            recyclerView?.layoutManager = LinearLayoutManager(this@BrowseActivity)
-        })
-    }
 }
