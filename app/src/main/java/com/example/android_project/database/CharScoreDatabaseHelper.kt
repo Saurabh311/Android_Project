@@ -14,14 +14,14 @@ class CharScoreDatabaseHelper (
     val COLUMN_WINS = "WINS"
     val COLUMN_LOSS = "LOSS"
 
-    override fun onCreate(db: SQLiteDatabase?) {
+    override fun onCreate(db: SQLiteDatabase) {
         val createTable = "CREATE TABLE " + SCORE_TABLE +
                 " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_CHAR_ID + " INT, " +
-                COLUMN_WINS + "INT, " +
-                COLUMN_LOSS + "INT)"
+                COLUMN_WINS + " INT, " +
+                COLUMN_LOSS + " INT)"
 
-        db?.execSQL(createTable)
+        db.execSQL(createTable)
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -102,7 +102,7 @@ class CharScoreDatabaseHelper (
 
             cv.put(COLUMN_CHAR_ID, character.id)
             cv.put(COLUMN_LOSS, character.loss)
-            cv.put(COLUMN_WINS, character.wins)
+            cv.put(COLUMN_WINS , character.wins)
             val long = db.insert(SCORE_TABLE,null,cv)
             println("a character has been added")
             return long != -1L
