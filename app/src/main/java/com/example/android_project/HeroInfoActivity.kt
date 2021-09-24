@@ -57,43 +57,45 @@ class HeroInfoActivity: AppCompatActivity() {
         tv_work.setText(" Work: ${activeChar.work?.occupation}")
 
         var intelligence :Float = (activeChar.powerStats?.intelligence)!!.toFloat()
+        var strength : Float = (activeChar.powerStats?.strength)!!.toFloat()
+        var power : Float = (activeChar.powerStats?.power)!!.toFloat()
         var combat : Float = (activeChar.powerStats?.combat)!!.toFloat()
         var durability : Float = (activeChar.powerStats?.durability)!!.toFloat()
         var speed : Float = (activeChar.powerStats?.speed)!!.toFloat()
 
         val xValues = ArrayList<String>()
         xValues.add("Intelligence")
+        xValues.add("Strength")
+        xValues.add("Power")
         xValues.add("Combat")
-        xValues.add("Durability")
         xValues.add("Speed")
+        //xValues.add("Durability")
+
 
         barEntryArrayList = ArrayList()
-        barEntryArrayList.add(BarEntry(intelligence,0, "intellegent"))
-        barEntryArrayList.add(BarEntry(combat, 1, "Combat"))
-        barEntryArrayList.add(BarEntry(durability, 2, "Durability"))
-        barEntryArrayList.add(BarEntry(speed, 3, "Speed"))
+        barEntryArrayList.add(BarEntry(intelligence,0, "Intelligence"))
+        barEntryArrayList.add(BarEntry(strength,1, "Strength"))
+        barEntryArrayList.add(BarEntry(power,2, "Power"))
+        barEntryArrayList.add(BarEntry(combat, 3, "Combat"))
+        barEntryArrayList.add(BarEntry(speed, 4, "Speed"))
+        //barEntryArrayList.add(BarEntry(durability, 5, "Durability"))
+
 
         println(activeChar.powerStats)
 
         barDataSet= BarDataSet(barEntryArrayList, "Power Stats")
         val barData= BarData(xValues, barDataSet)
         barChart.data = barData
-        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS, 250)
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS)
         barDataSet.valueTextColor = Color.BLACK
-        barChart.size
-        barDataSet.valueTextSize = 20f
-        barChart.animateXY(2000, 2000)
-
-
-
-
-
+        barChart.setDescription("Power Statistics")
+        barDataSet.valueTextSize = 15f
+        barChart.animateXY(6000, 6000)
 
         btn_backButton.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java).apply {
                 // putExtra(selectedHero)
             }
-
             startActivity(intent)
         }
 
