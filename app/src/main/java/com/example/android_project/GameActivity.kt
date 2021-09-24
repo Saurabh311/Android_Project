@@ -39,6 +39,7 @@ class GameActivity : AppCompatActivity() {
     lateinit var cv_hero1: CardView
     lateinit var cv_hero2: CardView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -50,6 +51,7 @@ class GameActivity : AppCompatActivity() {
 
         observeCharacterChange()
         viewModel.randomCharacter()
+
     }
 
     private fun observeCharacterChange() {
@@ -85,9 +87,10 @@ class GameActivity : AppCompatActivity() {
     }
 
     fun getHeroInfo(view: View) {
-        val id = view.id.toString()
+        val id = view.toString()
+        println(id)
 
-        if (id.equals("2131230818")){
+        if (id.contains("btn_heroInfo1")){
             val intent = Intent(this, HeroInfoActivity::class.java).apply {
                 putExtra("activeChar", activeChar1)
             }
@@ -105,19 +108,19 @@ class GameActivity : AppCompatActivity() {
     fun endGame (view: View){
 
         var winner : Character
-        val id = view.id.toString()
+        val id = view.toString()
         tv_vs = findViewById(R.id.vs)
         cv_hero1 = findViewById(R.id.cv_hero1)
         cv_hero2 = findViewById(R.id.cv_hero2)
 
-        if (id == "2131230866") {
+        if (id.contains("hero2")) {
             activeChar2.wins = activeChar2.wins?.plus(1)
             activeChar1.loss = activeChar1.loss?.plus(1)
             cv_hero2.setCardBackgroundColor(Color.YELLOW)
             addScore()
 
         }else{
-            println(activeChar1.wins)
+            //println(activeChar1.wins)
             activeChar1.wins = activeChar1.wins?.plus(1)
             activeChar2.loss = activeChar2.loss?.plus(1)
             cv_hero1.setCardBackgroundColor(Color.YELLOW)
