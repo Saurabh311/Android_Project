@@ -30,8 +30,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="388dp"
-        android:layout_height="219dp"
+        android:layout_width="385dp"
+        android:layout_height="210dp"
         android:layout_margin="20dp"
         android:background="@color/black"
         app:cardCornerRadius="20dp"
@@ -135,25 +135,15 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChart"
-        android:layout_width="404dp"
-        android:layout_height="367dp"
+        android:layout_width="398dp"
+        android:layout_height="315dp"
+        android:layout_marginTop="44dp"
         android:background="#A1E91E63"
-        app:layout_constraintBottom_toTopOf="@+id/hi_btn_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.861" />
-
-    <Button
-        android:id="@+id/hi_btn_back"
-        android:layout_width="84dp"
-        android:layout_height="41dp"
-        android:text="@string/btn_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barChart" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
