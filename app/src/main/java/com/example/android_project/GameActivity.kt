@@ -105,7 +105,7 @@ class GameActivity : AppCompatActivity() {
 
     }
 
-    fun endGame (view: View){
+    fun endRound (view: View){
 
         var winner : Character
         val id = view.toString()
@@ -126,15 +126,15 @@ class GameActivity : AppCompatActivity() {
             cv_hero1.setCardBackgroundColor(Color.YELLOW)
             addScore()
         }
-        tv_vs.text = "Winner"
+        tv_vs.text = "WINNER"
 
 
         Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java).apply {
-
-            }
-            startActivity(intent)
-        }, 2000)
+            viewModel.randomCharacter()
+            cv_hero1.setCardBackgroundColor(Color.WHITE)
+            cv_hero2.setCardBackgroundColor(Color.WHITE)
+            tv_vs.text = "VS"
+        }, 1500)
 
     }
     fun addScore () {
