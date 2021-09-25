@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#C2185B"
             android:text="@string/buttonFight"
-            android:translationX="145dp"
+            android:translationX="150dp"
             android:translationY="350dp"
             app:strokeColor="#C2185B" />
 
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#C2185B"
             android:text="@string/buttonSearchHero"
-            android:translationX="215dp"
+            android:translationX="262dp"
             android:translationY="300dp"
             app:strokeColor="#C2185B" />
 

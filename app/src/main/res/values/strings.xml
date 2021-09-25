@@ -3,8 +3,8 @@
     <string name="characterName">Character Name</string>
     <string name="characterImgPlaceHolder">Character pic</string>
     <string name="buttonFight">Fight</string>
-    <string name="buttonRandomChar">Random hero</string>
-    <string name="buttonSearchHero">Search hero</string>
+    <string name="buttonRandomChar">Random</string>
+    <string name="buttonSearchHero">Search</string>
     <string name="vs">VS</string>
     <string name="whoWillWin">Who will win?</string>
     <string name="select">Select</string>
