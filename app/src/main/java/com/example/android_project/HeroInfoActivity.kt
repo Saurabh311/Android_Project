@@ -99,9 +99,9 @@ class HeroInfoActivity: AppCompatActivity() {
         barChart.data = barData
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS)
         barDataSet.valueTextColor = Color.BLACK
-        barChart.setDescription("Power Statistics")
+        barChart.setDescription("")
         barDataSet.valueTextSize = 15f
-        barChart.animateXY(4000, 4000)
+        barChart.animateXY(500, 1500)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
