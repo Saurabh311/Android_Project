@@ -50,7 +50,10 @@ class MainActivity : AppCompatActivity() {
         //places an observer to update the UI every time the character in viewModel changes
         viewModel.getCharacter().observe(this, Observer { character ->
             charName.text = character.name
-            Picasso.get().load(character.img?.url).into(charImageView)
+            Picasso.get().load(character.img?.url)
+                .error(R.drawable.hero_placeholder_foreground)
+                .into(charImageView)
+
             activeChar = character
         })
 

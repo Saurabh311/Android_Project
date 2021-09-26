@@ -48,7 +48,9 @@ class HeroInfoActivity: AppCompatActivity() {
         barChart = findViewById(R.id.barChart)
 
         tv_heroName.setText(activeChar.name)
-        Picasso.get().load(activeChar.img?.url).into(iv_heroImage)
+        Picasso.get().load(activeChar.img?.url)
+            .error(R.drawable.hero_placeholder_foreground)
+            .into(iv_heroImage)
         tv_fullName.setText("Full Name: ${activeChar.bio?.fullName}")
         tv_gender.setText("Gender: ${activeChar.appearance?.gender}")
         tv_work.setText("Work: ${activeChar.work?.occupation}")

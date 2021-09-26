@@ -73,7 +73,9 @@ class GameActivity : AppCompatActivity() {
         tv_heroName1.text = activeChar1.name
         tv_heroWins1.text  = activeChar1.wins.toString()
         tv_heroLoss1.text = activeChar1.loss.toString()
-        Picasso.get().load(activeChar1.img?.url).into(iv_heroImage1)
+        Picasso.get().load(activeChar1.img?.url)
+            .error(R.drawable.hero_placeholder_foreground)
+            .into(iv_heroImage1)
 
         tv_heroName2 = findViewById(R.id.tv_heroName2)
         iv_heroImage2 = findViewById(R.id.iv_hero2)
@@ -83,7 +85,9 @@ class GameActivity : AppCompatActivity() {
         tv_heroName2.text = activeChar2.name
         tv_heroWins2.text = activeChar2.wins.toString()
         tv_heroLoss2.text = activeChar2.loss.toString()
-        Picasso.get().load(activeChar2.img?.url).into(iv_heroImage2)
+        Picasso.get().load(activeChar2.img?.url)
+            .error(R.drawable.hero_placeholder_foreground)
+            .into(iv_heroImage2)
     }
 
     fun getHeroInfo(view: View) {
