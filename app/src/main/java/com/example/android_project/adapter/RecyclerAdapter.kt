@@ -34,14 +34,10 @@ class RecyclerAdapter(var heroList: List<Character>, var context: Context) :
 
             }
             tv_recyclerName.text = character.name
-            Picasso.get().load(character.img?.url).into(iv_avatar)
+            Picasso.get().load(character.img?.url)
+                .error(R.drawable.hero_placeholder_foreground)
+                .into(iv_avatar)
 
-           /* container.setOnClickListener{
-                val intent = Intent(context, MainActivity::class.java).apply {
-                    putExtra("activeChar", character)
-                }
-                startActivity(intent)
-            }*/
         }
     }
 
