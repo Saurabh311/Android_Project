@@ -1,4 +1,4 @@
-package com.example.android_project.model
+package com.example.android_project.data
 
 import com.squareup.moshi.Json
 import java.io.Serializable

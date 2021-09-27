@@ -1,18 +1,13 @@
 package com.example.android_project
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.EventLogTags
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.size
-import com.example.android_project.model.Character
-import com.example.android_project.model.PowerStats
+import com.example.android_project.data.Character
 import com.github.mikephil.charting.charts. *
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
