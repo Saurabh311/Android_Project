@@ -4,102 +4,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A1E91E63"
+    android:background="#1A292B"
+    app:layout_constraintGuide_percent="0.2"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/characterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         android:layout_weight="1"
+        android:background="#FFFFFAFC"
+        android:elevation="6dp"
         android:gravity="center"
-        android:text="@string/characterName"
-        android:textColor="#332F2F"
-        android:textSize="24sp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:rotation="-1"
+        android:rotationX="3"
+        android:rotationY="-1"
+        android:textAlignment="center"
+        android:textColor="#323030"
+        android:textSize="34sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_hero1"
-        android:layout_width="386dp"
-        android:layout_height="450dp"
-        android:layout_marginTop="12dp"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
 
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="false"
+        android:foreground="?android:attr/selectableItemBackground"
         android:scaleType="centerCrop"
         app:cardBackgroundColor="#FFFAFC"
         app:cardCornerRadius="6dp"
         app:cardElevation="6dp"
         app:contentPadding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/characterName">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefresh"
-            android:layout_width="334dp"
-            android:layout_height="289dp"
-            android:layout_marginTop="10dp"
-            android:translationX="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/characterName"
-            tools:context=".MainActivity">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/characterPic"
-                android:layout_width="380dp"
-                android:layout_height="213dp"
-                android:layout_marginTop="56dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/characterImgPlaceHolder"
-                android:scaleType="centerCrop"
-                app:cardCornerRadius="6dp"
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/buttonFight"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/characterName" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:context=".MainActivity">
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                <ImageButton
+                    android:id="@+id/characterPic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/characterImgPlaceHolder"
+                    android:elevation="4dp"
+                    android:scaleType="centerCrop"
+                    app:cardCornerRadius="6dp"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonFight"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <Button
-            android:id="@+id/buttonFight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#C2185B"
-            android:text="@string/buttonFight"
-            android:translationX="150dp"
-            android:translationY="350dp"
-            app:strokeColor="#C2185B" />
+            <Button
+                android:id="@+id/buttonRandomChar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#D81B60"
+                android:text="@string/buttonRandomChar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/buttonFight"
+                app:strokeColor="#C2185B" />
 
-        <Button
-            android:id="@+id/buttonSearchChar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#C2185B"
-            android:text="@string/buttonSearchHero"
-            android:translationX="262dp"
-            android:translationY="300dp"
-            app:strokeColor="#C2185B" />
+            <Button
+                android:id="@+id/buttonFight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#C2185B"
+                android:includeFontPadding="true"
+                android:text="@string/buttonFight"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/buttonSearchChar"
+                app:layout_constraintStart_toEndOf="@+id/buttonRandomChar"
+                app:strokeColor="#C2185B" />
 
-        <Button
-            android:id="@+id/buttonRandomChar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#C2185B"
-            android:text="@string/buttonRandomChar"
-            android:translationX="19dp"
-            android:translationY="300dp"
-            app:strokeColor="#C2185B" />
+            <Button
+                android:id="@+id/buttonSearchChar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#D81B60"
+                android:text="@string/buttonSearchHero"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/buttonFight"
+                app:strokeColor="#C2185B" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="72dp"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

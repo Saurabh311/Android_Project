@@ -3,6 +3,7 @@ package com.example.android_project
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         //places an observer to update the UI every time the character in viewModel changes
         viewModel.getCharacter().observe(this, Observer { character ->
             charName.text = character.name
+            charName.visibility = View.VISIBLE
             Picasso.get().load(character.img?.url)
                 .error(R.drawable.hero_placeholder_foreground)
                 .into(charImageView)
