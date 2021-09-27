@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A1E91E63"
+    android:background="#1A292B"
     android:textAlignment="center">
 
     <TextView
@@ -15,7 +15,7 @@
         android:elegantTextHeight="true"
         android:text="TextView"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textIsSelectable="false"
         android:textSize="34dp"
         android:textStyle="bold|italic"
