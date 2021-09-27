@@ -1,8 +1,8 @@
 package com.example.android_project.network
 
 
-class APIhelper {
-    var client = APIclient.apiService
+class APIHelper {
+    private var client = APIClient.apiService
 
     suspend fun getCharById(id: String) = client.fetchCharacterById(id)
 

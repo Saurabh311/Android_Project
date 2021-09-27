@@ -1,4 +1,4 @@
-package com.example.android_project.model
+package com.example.android_project.data
 import java.io.Serializable
 
 data class Thumbnail (

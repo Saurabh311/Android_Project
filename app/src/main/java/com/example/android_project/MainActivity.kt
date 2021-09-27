@@ -5,12 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
-import com.example.android_project.model.Character
-import com.example.android_project.viewmodel.MainViewModel
+import com.example.android_project.data.Character
+import com.example.android_project.viewmodel.AppViewModel
 import com.squareup.picasso.Picasso
 
 lateinit var activeChar: Character
@@ -18,38 +17,35 @@ const val MAX_NUM_CHARSID = 731 // max num om charids in api
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var btn_search: Button
-    lateinit var btn_random: Button
-    lateinit var btn_fight: Button
-    lateinit var imgBtn_charInfo: ImageButton
-    lateinit var charImageView: ImageView
-    lateinit var charName: TextView
+    private lateinit var btnSearch: Button
+    private lateinit var btnRandom: Button
+    private lateinit var btnFight: Button
+    private lateinit var imgBtnCharInfo: ImageButton
+    private lateinit var charImageView: ImageView
+    private lateinit var charName: TextView
 
-    lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: AppViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(AppViewModel::class.java)
 
         charImageView = findViewById(R.id.characterPic)
         charName = findViewById(R.id.characterName)
 
-
-        val intent = getIntent()
         if (intent.hasExtra("activeChar")) {
             activeChar = intent.getSerializableExtra("activeChar") as Character
         }
-        if (::activeChar.isInitialized){ // if activeChar exists change the viewModel
+        if (::activeChar.isInitialized) { // if activeChar exists change the viewModel
             viewModel.setCharacter(activeChar)
-        }else{
+        } else {
             viewModel.randomCharacter()
         }
 
-
         //places an observer to update the UI every time the character in viewModel changes
-        viewModel.getCharacter().observe(this, Observer { character ->
+        viewModel.getCharacter().observe(this, { character ->
             charName.text = character.name
             charName.visibility = View.VISIBLE
             Picasso.get().load(character.img?.url)
@@ -65,21 +61,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun initButtons() {
 
-        btn_search = findViewById(R.id.buttonSearchChar)
-        btn_fight = findViewById(R.id.buttonFight)
-        btn_random = findViewById(R.id.buttonRandomChar)
-        imgBtn_charInfo = findViewById(R.id.characterPic)
+        btnSearch = findViewById(R.id.buttonSearchChar)
+        btnFight = findViewById(R.id.buttonFight)
+        btnRandom = findViewById(R.id.buttonRandomChar)
+        imgBtnCharInfo = findViewById(R.id.characterPic)
 
-        btn_fight.setOnClickListener { startFight() }
-        btn_random.setOnClickListener {
+        btnFight.setOnClickListener { startFight() }
+        btnRandom.setOnClickListener {
             viewModel.randomCharacter()
         }
-        btn_search.setOnClickListener { browseChars() }
-        imgBtn_charInfo.setOnClickListener { getHeroInfo() }
+        btnSearch.setOnClickListener { browseChars() }
+        imgBtnCharInfo.setOnClickListener { getHeroInfo() }
     }
 
     private fun refreshChar() {
-        var refresh = findViewById<SwipeRefreshLayout>(R.id.swipeRefresh)
+        val refresh = findViewById<SwipeRefreshLayout>(R.id.swipeRefresh)
         refresh.setOnRefreshListener {
             viewModel.randomCharacter()
             refresh.isRefreshing = false
@@ -91,7 +87,6 @@ class MainActivity : AppCompatActivity() {
             putExtra("activeChar", activeChar)
         }
         startActivity(intent)
-
     }
 
     private fun browseChars() {
@@ -106,14 +101,12 @@ class MainActivity : AppCompatActivity() {
                 putExtra(
                     "activeChar",
                     activeChar
-                ) // send selected character wich is the active hero
+                )
             }
             startActivity(intent)
         } else {
             Toast.makeText(applicationContext, "Please select a hero first", Toast.LENGTH_SHORT)
                 .show()
         }
-
     }
-
 }
