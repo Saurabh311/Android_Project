@@ -32,8 +32,6 @@ class HeroInfoActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_heroinfo)
-
-        val intent = intent
         activeChar = (intent.getSerializableExtra("activeChar") as Character?)!!
 
         heroName = findViewById(R.id.hi_heroName)
