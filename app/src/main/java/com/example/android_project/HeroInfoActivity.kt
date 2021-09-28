@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android_project.data.Character
+import com.example.android_project.database.CharScoreDatabaseHelper
 import com.github.mikephil.charting.charts. *
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
@@ -26,6 +27,7 @@ class HeroInfoActivity: AppCompatActivity() {
     lateinit var barEntryArrayList: ArrayList<BarEntry>
     lateinit var barDataSet: BarDataSet
     lateinit var barChart: BarChart
+    lateinit var charsScoreDatabase: CharScoreDatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +51,9 @@ class HeroInfoActivity: AppCompatActivity() {
         tv_fullName.setText("Full Name: ${activeChar.bio?.fullName}")
         tv_gender.setText("Gender: ${activeChar.appearance?.gender}")
         tv_work.setText("Work: ${activeChar.work?.occupation}")
-        tv_heroScore.setText("Battles:      Won: ${activeChar.wins}      Lost:${activeChar.loss}")
+        charsScoreDatabase = CharScoreDatabaseHelper(this)
+        charsScoreDatabase.getCharScore(activeChar)
+        tv_heroScore.setText("Won: ${activeChar.wins}         Lost:${activeChar.loss}")
         getBarChart()
     }
 
@@ -89,7 +93,7 @@ class HeroInfoActivity: AppCompatActivity() {
             barEntryArrayList.add(BarEntry(powerStats[item], item))
         }
 
-        barDataSet= BarDataSet(barEntryArrayList, "Power Stats")
+        barDataSet= BarDataSet(barEntryArrayList, "Power Statistics")
         val barData= BarData(xValues, barDataSet)
         barChart.data = barData
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS)
