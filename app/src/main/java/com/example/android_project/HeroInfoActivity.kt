@@ -17,67 +17,66 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.squareup.picasso.Picasso
 
 class HeroInfoActivity: AppCompatActivity() {
-    lateinit var tv_heroName: TextView
-    lateinit var tv_heroScore: TextView
-    lateinit var iv_heroImage: ImageView
-    lateinit var tv_fullName: TextView
-    lateinit var tv_gender: TextView
-    lateinit var tv_work: TextView
-    lateinit var activeChar : Character
-    lateinit var barEntryArrayList: ArrayList<BarEntry>
-    lateinit var barDataSet: BarDataSet
-    lateinit var barChart: BarChart
-    lateinit var charsScoreDatabase: CharScoreDatabaseHelper
+    private lateinit var heroName: TextView
+    private lateinit var heroScore: TextView
+    private lateinit var heroImage: ImageView
+    private lateinit var fullName: TextView
+    private lateinit var gender: TextView
+    private lateinit var work: TextView
+    private lateinit var activeChar : Character
+    private lateinit var barEntryArrayList: ArrayList<BarEntry>
+    private lateinit var barDataSet: BarDataSet
+    private lateinit var barChart: BarChart
+    private lateinit var charsScoreDatabase: CharScoreDatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_heroinfo)
 
-        val intent = getIntent()
+        val intent = intent
         activeChar = (intent.getSerializableExtra("activeChar") as Character?)!!
 
-        tv_heroName = findViewById(R.id.hi_heroName)
-        tv_heroScore = findViewById(R.id.hi_score)
-        iv_heroImage = findViewById(R.id.hi_heroImage)
-        tv_fullName = findViewById(R.id.hi_fullName)
-        tv_gender = findViewById(R.id.hi_gender)
-        tv_work = findViewById(R.id.hi_work)
+        heroName = findViewById(R.id.hi_heroName)
+        heroScore = findViewById(R.id.hi_score)
+        heroImage = findViewById(R.id.hi_heroImage)
+        fullName = findViewById(R.id.hi_fullName)
+        gender = findViewById(R.id.hi_gender)
+        work = findViewById(R.id.hi_work)
         barChart = findViewById(R.id.barChart)
 
-        tv_heroName.setText(activeChar.name)
+        heroName.text = activeChar.name
         Picasso.get().load(activeChar.img?.url)
             .error(R.drawable.hero_placeholder_foreground)
-            .into(iv_heroImage)
-        tv_fullName.setText("Full Name: ${activeChar.bio?.fullName}")
-        tv_gender.setText("Gender: ${activeChar.appearance?.gender}")
-        tv_work.setText("Work: ${activeChar.work?.occupation}")
+            .into(heroImage)
+        fullName.text = "Full Name: ${activeChar.bio?.fullName}"
+        gender.text = "Gender: ${activeChar.appearance?.gender}"
+        work.text = "Work: ${activeChar.work?.occupation}"
         charsScoreDatabase = CharScoreDatabaseHelper(this)
         charsScoreDatabase.getCharScore(activeChar)
-        tv_heroScore.setText("Won: ${activeChar.wins}         Lost:${activeChar.loss}")
+        heroScore.text = "Won: ${activeChar.wins}         Lost:${activeChar.loss}"
         getBarChart()
     }
 
     private fun getBarChart() {
-        var powerStats : ArrayList<Float>
-        powerStats = ArrayList()
+        val powerStats : ArrayList<Float> = ArrayList()
 
-        var intelligence : Float = if(!((activeChar.powerStats?.intelligence!!).equals("null")))
+        val intelligence : Float = if((activeChar.powerStats?.intelligence!!) != "null")
             (activeChar.powerStats?.intelligence)!!.toFloat() else 0f
         powerStats.add(intelligence)
 
-        var strength : Float = if(!((activeChar.powerStats?.strength!!).equals("null")))
+        val strength : Float = if((activeChar.powerStats?.strength!!) != "null")
             (activeChar.powerStats?.strength)!!.toFloat() else 0f
         powerStats.add(strength)
 
-        var power : Float = if(!((activeChar.powerStats?.power!!).equals("null")))
+        val power : Float = if((activeChar.powerStats?.power!!) != "null")
             (activeChar.powerStats?.power)!!.toFloat() else 0f
         powerStats.add(power)
 
-        var combat : Float = if(!((activeChar.powerStats?.combat!!).equals("null")))
+        val combat : Float = if((activeChar.powerStats?.combat!!) != "null")
             (activeChar.powerStats?.combat)!!.toFloat() else 0f
         powerStats.add(combat)
 
-        var speed : Float = if(!((activeChar.powerStats?.speed!!).equals("null")))
+        val speed : Float = if((activeChar.powerStats?.speed!!) != "null")
             (activeChar.powerStats?.speed)!!.toFloat() else 0f
         powerStats.add(speed)
 
